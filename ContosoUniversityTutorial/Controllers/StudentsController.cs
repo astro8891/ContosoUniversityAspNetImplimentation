@@ -13,9 +13,11 @@ namespace ContosoUniversityTutorial.Controllers
 {
     public class StudentsController : Controller
     {
+        //instantiates the DB context
         private SchoolContext db = new SchoolContext();
 
         // GET: Students
+        // This method reads the DB students entity and returns a list of students
         public ActionResult Index()
         {
             return View(db.Students.ToList());
