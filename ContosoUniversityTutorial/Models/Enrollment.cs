@@ -7,6 +7,7 @@
 
     public class Enrollment
     {
+        //By giving the enrollment class ID's of the other classes you are creating a one to many relationship - the other classes do not have enrollment ID's
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
         public int StudentID { get; set; }
