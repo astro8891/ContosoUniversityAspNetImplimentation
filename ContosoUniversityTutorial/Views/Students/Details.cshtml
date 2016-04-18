@@ -33,6 +33,32 @@
         <dd>
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Enrollments)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Course Title</th>
+                    <th>Grade</th>
+                </tr>
+                @foreach (var item in Model.Enrollments)
+                {
+                    <tr>
+                        <td>
+                            @*The course title is retrieved from the Course entity that's stored in the Course navigation property of the Enrollments entity.*@
+                            @Html.DisplayFor(modelItem => item.Course.Title)
+                        </td>
+                        <td>
+                            @*Same here for grade*@
+                            @Html.DisplayFor(modelItem => item.Grade)
+                            @*All of this data is retrieved from the database automatically when it's needed. (In other words, you are using lazy loading here.)
+                            What this means is that when you retrieve the students from the DB it doesnt get the course or grade info, it does get them when it needs them on the click, think of it as just in time*@
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
 
     </dl>
 </div>

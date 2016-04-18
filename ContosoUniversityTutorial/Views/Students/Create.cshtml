@@ -7,8 +7,9 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
+    // @Html.AntiForgeryToken(), which works with the ValidateAntiForgeryToken attribute in the controller to help prevent cross-site request forgery attacks.
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
