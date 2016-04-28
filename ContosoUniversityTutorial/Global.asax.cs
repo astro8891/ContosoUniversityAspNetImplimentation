@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ContosoUniversity.DAL;
+using System.Data.Entity.Infrastructure.Interception;
 
 namespace ContosoUniversityTutorial
 {
@@ -19,6 +21,8 @@ namespace ContosoUniversityTutorial
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer(new SchoolInitializer());
+            DbInterception.Add(new SchoolInterceptorTransientErrors());
+            DbInterception.Add(new SchoolInterceptorLogging());
         }
     }
 }

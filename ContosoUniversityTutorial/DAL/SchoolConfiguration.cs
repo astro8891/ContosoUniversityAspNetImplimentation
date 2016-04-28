@@ -13,7 +13,7 @@ namespace ContosoUniversityTutorial.DAL
     {
         public SchoolConfiguration()
         {
-            SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());
+            SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());          
         }
     }
 }

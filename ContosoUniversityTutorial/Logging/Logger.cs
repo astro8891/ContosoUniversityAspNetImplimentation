@@ -7,6 +7,29 @@ using System.Web;
 
 namespace ContosoUniversityTutorial.Logging
 {
+
+    public interface ILogger
+    {
+        void Information(string message);
+        void Information(string fmt, params object[] vars);
+        void Information(Exception exception, string fmt, params object[] vars);
+
+        void Warning(string message);
+        void Warning(string fmt, params object[] vars);
+        void Warning(Exception exception, string fmt, params object[] vars);
+
+        void Error(string message);
+        void Error(string fmt, params object[] vars);
+        void Error(Exception exception, string fmt, params object[] vars);
+
+        //TraceApi methods enable you to track the latency of each call to an external service such as SQL Database
+        void TraceApi(string componentName, string method, TimeSpan timespan);
+        void TraceApi(string componentName, string method, TimeSpan timespan, string properties);
+        void TraceApi(string componentName, string method, TimeSpan timespan, string fmt, params object[] vars);
+
+    }
+
+    //The implementation uses System.Diagnostics to do the tracing. This is a built-in feature of .NET
     public class Logger : ILogger
     {
 
@@ -80,6 +103,5 @@ namespace ContosoUniversityTutorial.Logging
             sb.Append(exception.ToString());
             return sb.ToString();
         }
-    }
-    {
+    }    
 }
